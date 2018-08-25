@@ -1,0 +1,15 @@
+{
+  "name": "yet-another-state-management-library",
+  "version": "0.1.0",
+  "description": "Easy to use state management with good typescript support, and isn't susceptible to spaghetti code",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Kenny Raisbeck",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "rxjs": "^6.2.2"
+  }
+}
