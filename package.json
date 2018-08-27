@@ -6,10 +6,8 @@
   "types": "dist/index.d.ts",
   "author": "Kenny Raisbeck",
   "license": "MIT",
+  "repository": "github:drwaterycat/yet-another-state-management-library",
   "devDependencies": {
     "typescript": "^3.0.1"
-  },
-  "dependencies": {
-    "rxjs": "^6.2.2"
   }
 }

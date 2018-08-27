@@ -4,7 +4,7 @@ import { AsyncAction, isAsync } from "./async";
 import { Middleware } from "./middleware";
 import { compose } from "./compose";
 
-export class Store<State extends object> {
+export class Store<State> {
     private isDispatching = false;
     private currentState: State;
     private middlewares: Middleware[] = [];
@@ -25,12 +25,12 @@ export class Store<State extends object> {
         this.reducer = newReducer;
     }
 
-    public dispatch<T>(action: Action<T> | AsyncAction) {
+    public dispatch<T>(action: Action<T> | AsyncAction<State>) {
         if (this.isDispatching) {
             throw new Error(`Don't dispatch within a reducer!`);
         }
         if (isAsync(<Action>action)) {
-            const async = <AsyncAction>action;
+            const async = <AsyncAction<State>>action;
             const getState = () => this.currentState;
             async(this.dispatchInternal, getState);
         } else {
@@ -39,7 +39,7 @@ export class Store<State extends object> {
         }
     }
 
-    public registerMiddleware<T>(middleware: Middleware) {
+    public registerMiddleware(middleware: Middleware) {
         this.middlewares.push(middleware);
     }
 
